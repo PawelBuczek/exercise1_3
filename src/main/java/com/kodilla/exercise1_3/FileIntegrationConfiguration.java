@@ -37,14 +37,14 @@ public class FileIntegrationConfiguration {
         File directory = new File("data/output");
         FileWritingMessageHandler handler = new FileWritingMessageHandler(directory);
         handler.setExpectReply(false);
-        handler.setFileNameGenerator(processingFileNameGenerator());
+        handler.setFileNameGenerator(defaultFileNameGenerator());
         handler.setFileExistsMode(FileExistsMode.APPEND);
 
         return handler;
     }
 
     @Bean
-    public DefaultFileNameGenerator processingFileNameGenerator() {
+    public DefaultFileNameGenerator defaultFileNameGenerator() {
         DefaultFileNameGenerator defaultFileNameGenerator = new DefaultFileNameGenerator();
         defaultFileNameGenerator.setExpression("'my-file-list.txt'");
         return defaultFileNameGenerator;
